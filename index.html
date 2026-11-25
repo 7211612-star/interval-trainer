@@ -1,4 +1,25 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Интервалы — тренажёр</title><style>:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#171733;background:#f5f4fc}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:24px 16px}h1{font-size:26px;margin:0 0 6px}.muted{color:#686981}.card{background:white;border:1px solid #e2e0f0;border-radius:20px;padding:22px;margin-top:18px;box-shadow:0 8px 24px #2520600a}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.small{font-size:14px}.notes{text-align:center;font-size:38px;font-weight:750;margin:14px 0 6px}.piano{position:relative;height:145px;display:grid;grid-template-columns:repeat(var(--key-count,15),var(--white-width,34px));margin:12px 0 12px;user-select:none;overflow:visible;width:max-content;isolation:isolate}.white{position:relative;min-width:0;background:linear-gradient(white,#f0eff9);border:1px solid #9695a6;border-radius:0 0 7px 7px;display:flex;align-items:end;justify-content:center;padding-bottom:12px;font-size:clamp(8px,1.7vw,12px);white-space:nowrap;overflow:hidden}.white.hit{background:#bba7ff;box-shadow:inset 0 -5px 0 #8661e5}.white.hit.lower{background:#9a7cf0}.white.hit.upper{background:#c4b3ff}.white,.black{cursor:pointer;touch-action:manipulation}.white:active{background:#ddd2ff}.black:active{background:#956aff}.sound-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:16px}.sound-actions button{flex:1;min-width:125px}.sound-status{text-align:center;font-size:13px;color:#686981;margin-top:9px;min-height:18px}.black{position:absolute;top:0;width:calc(var(--white-width,34px) * .64);height:87px;background:#252533;border-radius:0 0 5px 5px;z-index:2;transform:translateX(-50%)}.black.hit{background:#6b42dd;box-shadow:inset 0 -5px 0 #5131af}.black.hit.lower{background:#6b42dd}.black.hit.upper{background:#a28bf6}.black span{color:white;font-size:10px;position:absolute;bottom:8px;left:0;right:0;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-weight:650;margin-bottom:7px}input{width:100%;padding:13px 12px;border:1px solid #c9c6dc;border-radius:11px;font-size:16px;background:#fff}button{border:0;background:#7449e8;color:white;padding:14px 18px;border-radius:12px;font-size:16px;font-weight:650;cursor:pointer}button:disabled{opacity:.5}button.secondary{background:#eee9ff;color:#4b2fa4}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.feedback{margin-top:16px;padding:16px;border-radius:12px;background:#f2efff;line-height:1.65}.hidden{display:none}.pill{font-size:13px;background:#eee9ff;padding:7px 11px;border-radius:20px}.progress{height:8px;border-radius:9px;background:#e6e1f6;margin-top:12px;overflow:hidden}.progress>div{height:100%;background:#7449e8;width:0}#pianoNote{font-size:13px;color:#77718e;text-align:center}@media(max-width:560px){.grid{grid-template-columns:1fr}.notes{font-size:31px}.card{padding:16px}.white{font-size:clamp(7px,2.1vw,10px);padding-bottom:9px}.piano{height:125px;--white-width:32px}.black{height:78px}}.mode{margin-top:18px}select{width:100%;padding:13px 12px;border:1px solid #c9c6dc;border-radius:11px;font-size:16px;background:white;color:#171733}.mode-label{display:flex;align-items:center;gap:12px;background:white;padding:14px;border:1px solid #e2e0f0;border-radius:14px;margin:0;cursor:pointer}.mode-label input{width:22px;height:22px;flex:none;accent-color:#7449e8}.mode-label small{display:block;font-weight:400;color:#686981;margin-top:4px;line-height:1.4}.piano.extended .white{font-size:11px}.piano-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:thin;border-radius:8px}.piano{--white-width:34px}.piano-scroll .piano{margin-top:4px}@media(max-width:560px){.piano.extended .white{font-size:10px}} .zoom-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 4px}.zoom-controls button{padding:7px 14px;min-width:48px;font-size:22px;line-height:1.2}.zoom-controls output{font-size:13px;color:#686981;min-width:105px;text-align:center}.zoom-controls .zoom-label{font-size:13px;color:#686981}.explorer-help{line-height:1.5}.explorer-picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.explorer-result{margin-top:14px;padding:15px;background:#f2efff;border-radius:12px;line-height:1.65}.explorer-result h3{margin:0 0 8px}.explorer-result p{margin:5px 0}.explorer-key-selected{outline:3px solid #e18b36;outline-offset:-3px}.explorer-key-selected.second{outline-color:#4b9bba}.explorer-picks select{margin-top:5px}.explorer-picks label{font-size:13px}.explorer-scroll{margin-top:10px}@media(max-width:560px){.zoom-controls{gap:8px}.zoom-controls button{min-width:44px}}.choice-block{margin-bottom:16px}.choices{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.choices button{padding:10px 3px;background:#f4f1fc;color:#37296b;border:1px solid #ded7f0;font-size:15px}.choices button.selected{background:#7449e8;color:white;border-color:#7449e8}.quality-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{padding:12px;line-height:1.5}.feedback .error{color:#a32626}.feedback .ok{color:#167342}@media(max-width:380px){.choices{grid-template-columns:repeat(4,minmax(0,1fr))}.quality-choices{grid-template-columns:repeat(2,minmax(0,1fr))}} .answer-card{padding:14px}.answer-card .choice-block{margin-bottom:12px}.answer-card label{font-size:14px;margin-bottom:5px}.answer-card .choices{display:grid;gap:3px;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr))}.answer-card .choices button{min-width:0;min-height:36px;padding:5px 1px;font-size:13px;border-radius:8px;line-height:1.15}.answer-card .quality-choices button{font-size:12px;padding:5px 2px;overflow-wrap:anywhere}.answer-card .actions{margin-top:8px;gap:5px}.answer-card .actions button{width:100%;padding:10px;font-size:14px}.answer-card .feedback{margin-top:8px;padding:8px;font-size:13px}.answer-card{padding:12px!important}.answer-card .choices{display:flex!important;flex-direction:column;gap:4px}.answer-card .choice-row{display:flex;gap:4px}.answer-card .choice-row button{flex:1 1 0;min-width:0;padding:4px 0;min-height:34px;font-size:13px}.answer-card .quality-choices .choice-row button{font-size:11px;overflow-wrap:normal}.answer-card .actions button{flex:1 0 100%;width:100%}.answer-card .actions .hidden{display:none}.compact-settings{margin-top:10px;background:#eee9fb;border-radius:12px;color:#49328a}.compact-settings summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;font-size:14px;font-weight:650;list-style:none}.compact-settings summary::-webkit-details-marker{display:none}.settings-chevron{margin-left:auto;font-size:19px;line-height:1}.compact-settings[open] .settings-chevron{transform:rotate(180deg)}.settings-body{padding:0 10px 8px}.settings-body label{font-size:12px;margin:8px 0 4px}.settings-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.settings-options button{background:#e2daf7;color:#49328a;font-size:11px;padding:8px 1px;border-radius:8px;min-width:0}.settings-options button[aria-pressed=true]{background:#7449e8;color:white}#closeSettings{display:block;width:100%;background:transparent;color:#6543b9;font-size:12px;padding:8px 0 0}.compact-settings select[hidden]{display:none}.compact-settings+.progress{margin-top:8px} .wrap{padding:14px 12px}h1{margin:0;font-size:25px}.card{margin-top:10px}.task-card{padding:10px}.task-toolbar{display:flex;align-items:center;gap:4px;min-width:0}.task-toolbar .notes{font-size:clamp(12px,4.5vw,22px);margin:0;text-align:left;white-space:nowrap;letter-spacing:-.35px;min-width:0;flex:0 1 auto}.task-toolbar .play-circle{border-radius:50%;width:30px;height:30px;padding:0;flex:0 0 30px;font-size:12px;line-height:1}.task-toolbar #playTogether{font-size:19px}.task-toolbar .zoom-controls{margin:0 0 0 auto;gap:3px;flex:none}.task-toolbar .zoom-controls button{min-width:25px;width:25px;height:30px;padding:0;font-size:19px}.task-toolbar .zoom-controls output{min-width:20px;font-size:12px}.task-card .piano{margin:8px 0 0}.answer-card .choice-row button,.answer-card .quality-choices .choice-row button{font-size:12px;font-weight:650;min-height:34px;border-radius:8px;padding:4px 1px;overflow-wrap:anywhere}.answer-card label{font-size:14px;font-weight:650}footer{text-align:right;color:#77718e;font-size:11px;margin:12px 2px 0}@media(max-width:360px){.task-toolbar .notes{font-size:12px}.task-toolbar{gap:3px}.task-toolbar .play-circle{width:26px;height:26px;flex-basis:26px}} .symbol-preview{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#686981;margin-top:6px}.symbol-preview strong{font-size:15px;color:#49328a}.quality-choices button{white-space:normal;overflow-wrap:normal;min-height:32px;height:auto;padding:5px 2px;line-height:1.2} .app-header{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px}.app-header h1{font-size:clamp(18px,5.2vw,25px);white-space:nowrap}.app-header .compact-settings{margin:0;justify-self:end;max-width:100%;position:relative}.app-header .compact-settings summary{font-size:clamp(10px,3vw,13px);padding:7px 8px;gap:4px;white-space:nowrap}.app-header .compact-settings[open]{position:static}.app-header .settings-body{position:absolute;left:12px;right:12px;z-index:10;background:#eee9fb;border-radius:12px;box-shadow:0 6px 20px #25206025}.wrap{position:relative;padding-top:10px}.task-toolbar{display:grid;grid-template-columns:minmax(78px,1fr) minmax(0,2fr) minmax(78px,1fr);gap:3px}.play-controls{display:flex;gap:4px;align-items:center}.task-toolbar .notes{text-align:center;font-size:clamp(12px,4.5vw,22px);white-space:nowrap}.task-toolbar .zoom-controls{justify-self:end;margin:0}.answer-card .choice-block{margin-bottom:6px}.answer-card label{margin-bottom:3px}.answer-card .choices,.answer-card .choice-row{gap:3px}.answer-card .choice-row button,.answer-card .quality-choices .choice-row button{min-height:28px;padding:3px 1px}.answer-card .actions{margin-top:5px}.answer-card .actions button{padding:8px}.symbol-preview{margin-top:3px}.card{margin-top:8px}@media(max-width:560px){.task-card .piano{height:112px;margin-top:5px}.task-card .black{height:70px}.task-card{padding:8px}.answer-card{padding:10px!important}}</style></head><body><main class="wrap"><header class="app-header"><h1>🎹 Интервалы</h1><details class="compact-settings" id="settings"><summary><span aria-hidden="true">⚙</span><span id="settingsSummary">Простые · Базовая</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-body"><label>Режим тренировки</label><div class="settings-options" data-setting="trainingMode"><button type="button" data-value="simple">Простые</button><button type="button" data-value="compound">Составные</button><button type="button" data-value="all">Все</button></div><label>Сложность</label><div class="settings-options" data-setting="difficulty"><button type="button" data-value="basic">Базовая</button><button type="button" data-value="expanded">Расширенная</button><button type="button" data-value="full">Полная</button></div><select hidden id="trainingMode" aria-label="Режим"><option value="simple">Простые</option><option value="compound">Составные</option><option value="all">Все</option></select><select hidden id="difficulty" aria-label="Сложность"><option value="basic">Базовая</option><option value="expanded">Расширенная</option><option value="full">Полная</option></select><button type="button" id="closeSettings">Свернуть настройки</button></div></details></header><section class="card task-card"><div class="task-toolbar"><div class="play-controls"><button type="button" class="play-circle" id="playSequential" aria-label="По очереди" title="По очереди">♪→♪</button><button type="button" class="secondary play-circle" id="playTogether" aria-label="Вместе" title="Вместе">♫</button></div><div class="notes" id="question">…</div><div class="zoom-controls" aria-label="Масштаб клавиатуры"><button type="button" class="secondary" id="zoomOut" aria-label="Уменьшить клавиши">−</button><output id="zoomValue">32</output><button type="button" class="secondary" id="zoomIn" aria-label="Увеличить клавиши">+</button></div></div><div class="piano-scroll" id="pianoScroll" aria-label="Прокручиваемая клавиатура"><div class="piano" id="piano"><div class="white" data-note="0">До</div><div class="white" data-note="2">Ре</div><div class="white" data-note="4">Ми</div><div class="white" data-note="5">Фа</div><div class="white" data-note="7">Соль</div><div class="white" data-note="9">Ля</div><div class="white" data-note="11">Си</div><div class="white" data-note="12">До</div><div class="white hit" data-note="14">Ре</div><div class="white" data-note="16">Ми</div><div class="white" data-note="17">Фа</div><div class="white" data-note="19">Соль</div><div class="white" data-note="21">Ля</div><div class="white" data-note="23">Си</div><div class="white" data-note="24">До</div><div class="black" data-note="1" style="left:6.666666666666667%"></div><div class="black" data-note="3" style="left:13.333333333333334%"></div><div class="black" data-note="6" style="left:26.666666666666668%"></div><div class="black hit" data-note="8" style="left:33.33333333333333%"></div><div class="black" data-note="10" style="left:40.0%"></div><div class="black" data-note="13" style="left:53.333333333333336%"></div><div class="black" data-note="15" style="left:60.0%"></div><div class="black" data-note="18" style="left:73.33333333333333%"></div><div class="black" data-note="20" style="left:80.0%"></div><div class="black" data-note="22" style="left:86.66666666666667%"></div></div></div></section><section class="card answer-card"><div class="choice-block"><label>1. Количество ступеней</label><div id="stepsChoices" class="choices"></div></div><div class="choice-block"><label>2. Название интервала</label><div id="nameChoices" class="choices"></div></div><div class="choice-block"><label>3. Количество тонов</label><div id="tonesChoices" class="choices"></div></div><div class="choice-block"><label>4. Вид интервала</label><div id="qualityChoices" class="choices quality-choices"></div></div><div class="symbol-preview">Итоговое обозначение: <strong id="symbolPreview">——</strong></div><div class="actions"><button id="check">Проверить ответы</button><button class="secondary hidden" id="next">Следующее задание →</button></div><div class="feedback hidden" id="feedback"></div></section><section class="card" id="explorer"><h2 style="margin:0 0 8px">🎹 Определить интервал по клавишам</h2><div class="muted small explorer-help">Нажми две клавиши снизу: сначала нижнюю, затем верхнюю. Я покажу ступени, тоны, полное название и обозначение. Для чёрных клавиш можно выбрать диез или бемоль — это влияет на название интервала.</div><div class="zoom-controls" aria-label="Масштаб нижней клавиатуры"><span class="zoom-label">Размер клавиш</span><button type="button" class="secondary" id="explorerZoomOut">−</button><output id="explorerZoomValue">32 px</output><button type="button" class="secondary" id="explorerZoomIn">+</button></div><div class="piano-scroll explorer-scroll" id="explorerScroll"><div class="piano" id="explorerPiano" aria-label="Клавиатура для выбора двух нот"></div></div><div class="explorer-picks"><div><label for="explorerFirst">1. Первая нота</label><select id="explorerFirst" aria-label="Написание первой ноты" disabled><option>Нажми клавишу</option></select></div><div><label for="explorerSecond">2. Вторая нота</label><select id="explorerSecond" aria-label="Написание второй ноты" disabled><option>Нажми клавишу</option></select></div></div><div class="actions"><button class="secondary" type="button" id="explorerReset">Выбрать заново</button></div><div class="explorer-result hidden" id="explorerResult" aria-live="polite"></div></section><footer>Тренажёр по сольфеджио · v1.21</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Интервалы — тренажёр</title><style>:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#171733;background:#f5f4fc}*{box-sizing:border-box}body{margin:0}.wrap{max-width:850px;margin:auto;padding:24px 16px}h1{font-size:26px;margin:0 0 6px}.muted{color:#686981}.card{background:white;border:1px solid #e2e0f0;border-radius:20px;padding:22px;margin-top:18px;box-shadow:0 8px 24px #2520600a}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.small{font-size:14px}.notes{text-align:center;font-size:38px;font-weight:750;margin:14px 0 6px}.piano{position:relative;height:145px;display:grid;grid-template-columns:repeat(var(--key-count,15),var(--white-width,34px));margin:12px 0 12px;user-select:none;overflow:visible;width:max-content;isolation:isolate}.white{position:relative;min-width:0;background:linear-gradient(white,#f0eff9);border:1px solid #9695a6;border-radius:0 0 7px 7px;display:flex;align-items:end;justify-content:center;padding-bottom:12px;font-size:clamp(8px,1.7vw,12px);white-space:nowrap;overflow:hidden}.white.hit{background:#bba7ff;box-shadow:inset 0 -5px 0 #8661e5}.white.hit.lower{background:#9a7cf0}.white.hit.upper{background:#c4b3ff}.white,.black{cursor:pointer;touch-action:manipulation}.white:active{background:#ddd2ff}.black:active{background:#956aff}.sound-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:16px}.sound-actions button{flex:1;min-width:125px}.sound-status{text-align:center;font-size:13px;color:#686981;margin-top:9px;min-height:18px}.black{position:absolute;top:0;width:calc(var(--white-width,34px) * .64);height:87px;background:#252533;border-radius:0 0 5px 5px;z-index:2;transform:translateX(-50%)}.black.hit{background:#6b42dd;box-shadow:inset 0 -5px 0 #5131af}.black.hit.lower{background:#6b42dd}.black.hit.upper{background:#a28bf6}.black span{color:white;font-size:10px;position:absolute;bottom:8px;left:0;right:0;text-align:center}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-weight:650;margin-bottom:7px}input{width:100%;padding:13px 12px;border:1px solid #c9c6dc;border-radius:11px;font-size:16px;background:#fff}button{border:0;background:#7449e8;color:white;padding:14px 18px;border-radius:12px;font-size:16px;font-weight:650;cursor:pointer}button:disabled{opacity:.5}button.secondary{background:#eee9ff;color:#4b2fa4}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.feedback{margin-top:16px;padding:16px;border-radius:12px;background:#f2efff;line-height:1.65}.hidden{display:none}.pill{font-size:13px;background:#eee9ff;padding:7px 11px;border-radius:20px}.progress{height:8px;border-radius:9px;background:#e6e1f6;margin-top:12px;overflow:hidden}.progress>div{height:100%;background:#7449e8;width:0}#pianoNote{font-size:13px;color:#77718e;text-align:center}@media(max-width:560px){.grid{grid-template-columns:1fr}.notes{font-size:31px}.card{padding:16px}.white{font-size:clamp(7px,2.1vw,10px);padding-bottom:9px}.piano{height:125px;--white-width:32px}.black{height:78px}}.mode{margin-top:18px}select{width:100%;padding:13px 12px;border:1px solid #c9c6dc;border-radius:11px;font-size:16px;background:white;color:#171733}.mode-label{display:flex;align-items:center;gap:12px;background:white;padding:14px;border:1px solid #e2e0f0;border-radius:14px;margin:0;cursor:pointer}.mode-label input{width:22px;height:22px;flex:none;accent-color:#7449e8}.mode-label small{display:block;font-weight:400;color:#686981;margin-top:4px;line-height:1.4}.piano.extended .white{font-size:11px}.piano-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:thin;border-radius:8px}.piano{--white-width:34px}.piano-scroll .piano{margin-top:4px}@media(max-width:560px){.piano.extended .white{font-size:10px}} .zoom-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 4px}.zoom-controls button{padding:7px 14px;min-width:48px;font-size:22px;line-height:1.2}.zoom-controls output{font-size:13px;color:#686981;min-width:105px;text-align:center}.zoom-controls .zoom-label{font-size:13px;color:#686981}@media(max-width:560px){.zoom-controls{gap:8px}.zoom-controls button{min-width:44px}}.choice-block{margin-bottom:16px}.choices{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.choices button{padding:10px 3px;background:#f4f1fc;color:#37296b;border:1px solid #ded7f0;font-size:15px}.choices button.selected{background:#7449e8;color:white;border-color:#7449e8}.quality-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{padding:12px;line-height:1.5}.feedback .error{color:#a32626}.feedback .ok{color:#167342}@media(max-width:380px){.choices{grid-template-columns:repeat(4,minmax(0,1fr))}.quality-choices{grid-template-columns:repeat(2,minmax(0,1fr))}} .answer-card{padding:14px}.answer-card .choice-block{margin-bottom:12px}.answer-card label{font-size:14px;margin-bottom:5px}.answer-card .choices{display:grid;gap:3px;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr))}.answer-card .choices button{min-width:0;min-height:36px;padding:5px 1px;font-size:13px;border-radius:8px;line-height:1.15}.answer-card .quality-choices button{font-size:12px;padding:5px 2px;overflow-wrap:anywhere}.answer-card .actions{margin-top:8px;gap:5px}.answer-card .actions button{width:100%;padding:10px;font-size:14px}.answer-card .feedback{margin-top:8px;padding:8px;font-size:13px}.answer-card{padding:12px!important}.answer-card .choices{display:flex!important;flex-direction:column;gap:4px}.answer-card .choice-row{display:flex;gap:4px}.answer-card .choice-row button{flex:1 1 0;min-width:0;padding:4px 0;min-height:34px;font-size:13px}.answer-card .quality-choices .choice-row button{font-size:11px;overflow-wrap:normal}.answer-card .actions button{flex:1 0 100%;width:100%}.answer-card .actions .hidden{display:none}.compact-settings{margin-top:10px;background:#eee9fb;border-radius:12px;color:#49328a}.compact-settings summary{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;font-size:14px;font-weight:650;list-style:none}.compact-settings summary::-webkit-details-marker{display:none}.settings-chevron{margin-left:auto;font-size:19px;line-height:1}.compact-settings[open] .settings-chevron{transform:rotate(180deg)}.settings-body{padding:0 10px 8px}.settings-body label{font-size:12px;margin:8px 0 4px}.settings-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.settings-options button{background:#e2daf7;color:#49328a;font-size:11px;padding:8px 1px;border-radius:8px;min-width:0}.settings-options button[aria-pressed=true]{background:#7449e8;color:white}#closeSettings{display:block;width:100%;background:transparent;color:#6543b9;font-size:12px;padding:8px 0 0}.compact-settings select[hidden]{display:none}.compact-settings+.progress{margin-top:8px} .wrap{padding:14px 12px}h1{margin:0;font-size:25px}.card{margin-top:10px}.task-card{padding:10px}.task-toolbar{display:flex;align-items:center;gap:4px;min-width:0}.task-toolbar .notes{font-size:clamp(12px,4.5vw,22px);margin:0;text-align:left;white-space:nowrap;letter-spacing:-.35px;min-width:0;flex:0 1 auto}.task-toolbar .play-circle{border-radius:50%;width:30px;height:30px;padding:0;flex:0 0 30px;font-size:12px;line-height:1}.task-toolbar #playTogether{font-size:19px}.task-toolbar .zoom-controls{margin:0 0 0 auto;gap:3px;flex:none}.task-toolbar .zoom-controls button{min-width:25px;width:25px;height:30px;padding:0;font-size:19px}.task-toolbar .zoom-controls output{min-width:20px;font-size:12px}.task-card .piano{margin:8px 0 0}.answer-card .choice-row button,.answer-card .quality-choices .choice-row button{font-size:12px;font-weight:650;min-height:34px;border-radius:8px;padding:4px 1px;overflow-wrap:anywhere}.answer-card label{font-size:14px;font-weight:650}footer{text-align:right;color:#77718e;font-size:11px;margin:12px 2px 0}@media(max-width:360px){.task-toolbar .notes{font-size:12px}.task-toolbar{gap:3px}.task-toolbar .play-circle{width:26px;height:26px;flex-basis:26px}} .symbol-preview{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#686981;margin-top:6px}.symbol-preview strong{font-size:15px;color:#49328a}.quality-choices button{white-space:normal;overflow-wrap:normal;min-height:32px;height:auto;padding:5px 2px;line-height:1.2} .app-header{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px}.app-header h1{font-size:clamp(18px,5.2vw,25px);white-space:nowrap}.app-header .compact-settings{margin:0;justify-self:end;max-width:100%;position:relative}.app-header .compact-settings summary{font-size:clamp(10px,3vw,13px);padding:7px 8px;gap:4px;white-space:nowrap}.app-header .compact-settings[open]{position:static}.app-header .settings-body{position:absolute;left:12px;right:12px;z-index:10;background:#eee9fb;border-radius:12px;box-shadow:0 6px 20px #25206025}.wrap{position:relative;padding-top:10px}.task-toolbar{display:grid;grid-template-columns:minmax(78px,1fr) minmax(0,2fr) minmax(78px,1fr);gap:3px}.play-controls{display:flex;gap:4px;align-items:center}.task-toolbar .notes{text-align:center;font-size:clamp(12px,4.5vw,22px);white-space:nowrap}.task-toolbar .zoom-controls{justify-self:end;margin:0}.answer-card .choice-block{margin-bottom:6px}.answer-card label{margin-bottom:3px}.answer-card .choices,.answer-card .choice-row{gap:3px}.answer-card .choice-row button,.answer-card .quality-choices .choice-row button{min-height:28px;padding:3px 1px}.answer-card .actions{margin-top:5px}.answer-card .actions button{padding:8px}.symbol-preview{margin-top:3px}.card{margin-top:8px}@media(max-width:560px){.task-card .piano{height:112px;margin-top:5px}.task-card .black{height:70px}.task-card{padding:8px}.answer-card{padding:10px!important}}
+.quiz-heading{flex-wrap:wrap}
+.quiz-heading h2{margin:0;font-size:20px}
+#quizProgress{margin:12px 0 4px}
+#quizQuestion{margin:0 0 12px;font-size:18px}
+#quizQuestion:focus-visible{outline:2px solid #7449e8;outline-offset:3px}
+.choices.quiz-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.quiz-options button{min-height:44px;padding:8px;white-space:normal;overflow-wrap:anywhere}
+.quiz-options button:disabled{opacity:1;cursor:default}
+.quiz-options button.quiz-correct{background:#e7f5ed;border-color:#167342;color:#135f37}
+.quiz-options button.quiz-incorrect{background:#fceceb;border-color:#a32626;color:#8b2222}
+#quizNext{margin-top:12px}
+#quizNext[hidden],.quiz-options[hidden]{display:none}
+@media(max-width:360px){.choices.quiz-options{grid-template-columns:1fr}}
+</style></head><body><main class="wrap"><header class="app-header"><h1>🎹 Интервалы</h1><details class="compact-settings" id="settings"><summary><span aria-hidden="true">⚙</span><span id="settingsSummary">Простые · Базовая</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-body"><label>Режим тренировки</label><div class="settings-options" data-setting="trainingMode"><button type="button" data-value="simple">Простые</button><button type="button" data-value="compound">Составные</button><button type="button" data-value="all">Все</button></div><label>Сложность</label><div class="settings-options" data-setting="difficulty"><button type="button" data-value="basic">Базовая</button><button type="button" data-value="expanded">Расширенная</button><button type="button" data-value="full">Полная</button></div><select hidden id="trainingMode" aria-label="Режим"><option value="simple">Простые</option><option value="compound">Составные</option><option value="all">Все</option></select><select hidden id="difficulty" aria-label="Сложность"><option value="basic">Базовая</option><option value="expanded">Расширенная</option><option value="full">Полная</option></select><button type="button" id="closeSettings">Свернуть настройки</button></div></details></header><section class="card task-card"><div class="task-toolbar"><div class="play-controls"><button type="button" class="play-circle" id="playSequential" aria-label="По очереди" title="По очереди">♪→♪</button><button type="button" class="secondary play-circle" id="playTogether" aria-label="Вместе" title="Вместе">♫</button></div><div class="notes" id="question">…</div><div class="zoom-controls" aria-label="Масштаб клавиатуры"><button type="button" class="secondary" id="zoomOut" aria-label="Уменьшить клавиши">−</button><output id="zoomValue">32</output><button type="button" class="secondary" id="zoomIn" aria-label="Увеличить клавиши">+</button></div></div><div class="piano-scroll" id="pianoScroll" aria-label="Прокручиваемая клавиатура"><div class="piano" id="piano"><div class="white" data-note="0">До</div><div class="white" data-note="2">Ре</div><div class="white" data-note="4">Ми</div><div class="white" data-note="5">Фа</div><div class="white" data-note="7">Соль</div><div class="white" data-note="9">Ля</div><div class="white" data-note="11">Си</div><div class="white" data-note="12">До</div><div class="white hit" data-note="14">Ре</div><div class="white" data-note="16">Ми</div><div class="white" data-note="17">Фа</div><div class="white" data-note="19">Соль</div><div class="white" data-note="21">Ля</div><div class="white" data-note="23">Си</div><div class="white" data-note="24">До</div><div class="black" data-note="1" style="left:6.666666666666667%"></div><div class="black" data-note="3" style="left:13.333333333333334%"></div><div class="black" data-note="6" style="left:26.666666666666668%"></div><div class="black hit" data-note="8" style="left:33.33333333333333%"></div><div class="black" data-note="10" style="left:40.0%"></div><div class="black" data-note="13" style="left:53.333333333333336%"></div><div class="black" data-note="15" style="left:60.0%"></div><div class="black" data-note="18" style="left:73.33333333333333%"></div><div class="black" data-note="20" style="left:80.0%"></div><div class="black" data-note="22" style="left:86.66666666666667%"></div></div></div></section><section class="card answer-card"><div class="choice-block"><label>1. Количество ступеней</label><div id="stepsChoices" class="choices"></div></div><div class="choice-block"><label>2. Название интервала</label><div id="nameChoices" class="choices"></div></div><div class="choice-block"><label>3. Количество тонов</label><div id="tonesChoices" class="choices"></div></div><div class="choice-block"><label>4. Вид интервала</label><div id="qualityChoices" class="choices quality-choices"></div></div><div class="symbol-preview">Итоговое обозначение: <strong id="symbolPreview">——</strong></div><div class="actions"><button id="check">Проверить ответы</button><button class="secondary hidden" id="next">Следующее задание →</button></div><div class="feedback hidden" id="feedback"></div></section><section class="card" id="intervalQuiz" aria-labelledby="quizTitle">
+  <div class="top quiz-heading"><h2 id="quizTitle">Викторина по интервалам</h2><span class="pill" id="quizScore"></span></div>
+  <p class="muted small" id="quizProgress"></p>
+  <h3 id="quizQuestion" tabindex="-1"></h3>
+  <div class="choices quiz-options" id="quizOptions" role="group" aria-labelledby="quizQuestion"></div>
+  <div id="quizFeedback" role="status" aria-atomic="true"></div>
+  <button type="button" id="quizNext" hidden>Следующий вопрос</button>
+</section><footer>Тренажёр по сольфеджио · v1.22</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
 // Составные интервалы: качества соответствуют простому интервалу через октаву.
 const compoundNames={9:'нона',10:'децима',11:'ундецима',12:'дуодецима',13:'терцдецима',14:'квартдецима',15:'квинтдецима'};
 for(let d=9;d<=15;d++){
@@ -214,82 +235,149 @@ $('playTogether').onclick = () => {
   const q = current();
   playNotes([[q.start, 0, 1.6], [q.end, 0, 1.6]]);
 };
-// Independent lower keyboard: select two keys and see a theoretical interval breakdown.
-const explorerSelected=[];
-const explorerOffsets=[0,2,4,5,7,9,11];
-let explorerWidth=keyWidth;
-function spellingsForKey(key){
- const result=[];
- for(let octave=0;octave<4;octave++)for(let letter=0;letter<7;letter++)for(const alt of [-2,-1,0,1,2]){
-  if(explorerOffsets[letter]+octave*12+alt===key){
-   result.push({label:whiteNames[letter]+(accidentals.find(a=>a.shift===alt).mark),letter,octave,alt});
+// Reuse the main trainer's interval definitions.
+const quizIntervals = Object.entries(qualities)
+  .filter(([degree]) => Number(degree) <= 8)
+  .flatMap(([degree, entries]) => Object.entries(entries)
+    .filter(([, [, symbol]]) => /^[чмб]/.test(symbol) || symbol === 'ув4' || symbol === 'ум5')
+    .map(([tones, [name, symbol]]) => ({
+      degree: Number(degree), tones: Number(tones), name: cap(name), symbol
+    })));
+const quizQuestionsPerType = 4;
+let quizRound = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function quizShuffle(items) {
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const other = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
   }
- }
- return result;
+  return shuffled;
 }
-function explorerDraw(){
- const pianoEl=$('explorerPiano');pianoEl.style.setProperty('--white-width',explorerWidth+'px');pianoEl.style.setProperty('--key-count',22);
- let html='';
- for(let i=0;i<22;i++){
-  const note=offsets[i%7]+12*Math.floor(i/7);
-  const which=explorerSelected.indexOf(note);
-  html+=`<div class="white ${which>=0?'explorer-key-selected'+(which===1?' second':''):''}" data-note="${note}">${whiteNames[i%7]}</div>`;
- }
- for(let i=0;i<21;i++)if(blackAfter.includes(i%7)){
-  const note=offsets[i%7]+1+12*Math.floor(i/7),which=explorerSelected.indexOf(note);
-  html+=`<div class="black ${which>=0?'explorer-key-selected'+(which===1?' second':''):''}" data-note="${note}" style="left:calc(${i+1} * var(--white-width,34px))"></div>`;
- }
- pianoEl.innerHTML=html;
- $('explorerZoomValue').textContent=explorerWidth+' px';
- $('explorerZoomOut').disabled=explorerWidth<=minKeyWidth;
- $('explorerZoomIn').disabled=explorerWidth>=maxKeyWidth;
+
+function quizMeasure(value, [one, few, many]) {
+  if (value === 1) return fmt(value) + ' ' + one;
+  if (!Number.isInteger(value) || (value >= 2 && value <= 4)) return fmt(value) + ' ' + few;
+  return fmt(value) + ' ' + many;
 }
-function explorerRefresh(){
- for(let i=0;i<2;i++){
-  const el=$(i===0?'explorerFirst':'explorerSecond');
-  const prev=el.value;
-  if(i<explorerSelected.length){
-   el.disabled=false;
-   el.innerHTML=spellingsForKey(explorerSelected[i]).map((n,j)=>`<option value="${j}">${n.label}</option>`).join('');
-   if([...el.options].some(o=>o.value===prev))el.value=prev;
-  }else{el.disabled=true;el.innerHTML='<option>Нажми клавишу</option>'}
- }
- explorerDraw();
- const out=$('explorerResult');
- if(explorerSelected.length!==2){out.classList.add('hidden');return}
- const [a,b]=explorerSelected;
- const s1=spellingsForKey(a)[Number($('explorerFirst').value)||0];
- const s2=spellingsForKey(b)[Number($('explorerSecond').value)||0];
- if(!s1||!s2)return;
- const degree=(s2.octave-s1.octave)*7+s2.letter-s1.letter+1;
- const tones=(b-a)/2;
- const result=qualities[degree]?.[tones];
- const degreeNames=['прима','секунда','терция','кварта','квинта','секста','септима','октава','нона','децима','ундецима','дуодецима','терцдецима','квартдецима','квинтдецима'];
- const steps=[];
- for(let k=s1.octave*7+s1.letter;k<=s2.octave*7+s2.letter;k++)steps.push(whiteNames[k%7]);
- let info='';
- if(degree<1){info='Выбранное написание даёт нисходящий порядок ступеней. Попробуй другое написание.'}
- else if(result){
-  info=`<h3>${s1.label} → ${s2.label}: ${result[0]}</h3><p><strong>1. Ступени:</strong> ${degree} (${steps.join(' → ')})</p><p><strong>2. Тоны:</strong> ${String(tones).replace('.',',')}</p><p><strong>3. Полное название:</strong> ${result[0]}</p><p><strong>4. Обозначение:</strong> ${result[1]}</p>`;
-  if(tones===3&&(degree===4||degree===5))info+='<p>Это тритон: увеличенная кварта или уменьшённая квинта — в зависимости от написания нот.</p>';
- }else{
-  info=`<h3>${s1.label} → ${s2.label}</h3><p><strong>Ступени:</strong> ${degree}; <strong>тоны:</strong> ${String(tones).replace('.',',')}.</p><p>Это редкое или нестандартное написание интервала, которого пока нет в словаре тренажёра. Попробуй выбрать другое энгармоническое написание в выпадающем списке.</p>`;
- }
- out.innerHTML=info;out.classList.remove('hidden');
+
+const quizSteps = value => quizMeasure(value, ['ступень', 'ступени', 'ступеней']);
+const quizTones = value => quizMeasure(value, ['тон', 'тона', 'тонов']);
+
+function quizNumericOptions(answer, step, minimum, maximum) {
+  const offset = step * Math.floor(Math.random() * 4);
+  const start = Math.min(maximum - 3 * step, Math.max(minimum, answer - offset));
+  return Array.from({length: 4}, (_, index) => start + index * step);
 }
-$('explorerPiano').addEventListener('pointerdown',e=>{
- const el=e.target.closest('[data-note]');if(!el)return;
- const key=Number(el.dataset.note);playNote(key);
- if(explorerSelected.length===2)explorerSelected.length=0;
- explorerSelected.push(key);
- explorerRefresh();
+
+function quizQuestionPools() {
+  const exactIntervals = [];
+  const toneQuestions = [];
+  for (const interval of quizIntervals) {
+    const {degree, tones, name, symbol} = interval;
+    const measures = quizSteps(degree) + ' и ' + quizTones(tones);
+    const explanation = name + ' (' + symbol + ') — ' + measures + '.';
+    const distance = candidate => Math.abs(candidate.degree - degree) + Math.abs(candidate.tones - tones);
+    const distractors = quizShuffle(quizIntervals.filter(candidate => candidate !== interval))
+      .sort((a, b) => distance(a) - distance(b)).slice(0, 3);
+    exactIntervals.push({
+      prompt: measures + '. Какой это интервал?',
+      answer: name,
+      options: [name, ...distractors.map(candidate => candidate.name)],
+      explanation
+    });
+    toneQuestions.push({
+      prompt: 'Сколько тонов в интервале «' + name + '»?',
+      answer: quizTones(tones),
+      options: quizNumericOptions(tones, 0.5, 0, 7).map(quizTones),
+      explanation
+    });
+  }
+  const stepQuestions = Array.from({length: 8}, (_, index) => {
+    const degree = index + 1;
+    const name = cap(intervalNames[degree]);
+    return {
+      prompt: 'Сколько ступеней в интервале «' + name + '»?',
+      answer: quizSteps(degree),
+      options: quizNumericOptions(degree, 1, 1, 8).map(quizSteps),
+      explanation: name + ' — ' + quizSteps(degree) + '. При счёте учитываются обе ноты интервала.'
+    };
+  });
+  return [stepQuestions, toneQuestions, exactIntervals];
+}
+
+function renderQuizQuestion(focusQuestion = false) {
+  const question = quizRound[quizIndex];
+  quizAnswered = false;
+  $('quizProgress').textContent = 'Вопрос ' + (quizIndex + 1) + ' из ' + quizRound.length;
+  $('quizScore').textContent = 'Верно: ' + quizScore + ' из ' + quizIndex;
+  $('quizQuestion').textContent = question.prompt;
+  $('quizOptions').hidden = false;
+  $('quizOptions').replaceChildren();
+  $('quizFeedback').replaceChildren();
+  $('quizFeedback').className = '';
+  $('quizNext').hidden = true;
+  for (const option of quizShuffle(question.options)) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = option;
+    button.addEventListener('click', () => answerQuizQuestion(option));
+    $('quizOptions').append(button);
+  }
+  if (focusQuestion) $('quizQuestion').focus();
+}
+
+function answerQuizQuestion(option) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const question = quizRound[quizIndex];
+  const correct = option === question.answer;
+  if (correct) quizScore++;
+  $('quizScore').textContent = 'Верно: ' + quizScore + ' из ' + (quizIndex + 1);
+  for (const button of $('quizOptions').children) {
+    button.disabled = true;
+    if (button.textContent === question.answer) button.classList.add('quiz-correct');
+    else if (button.textContent === option) button.classList.add('quiz-incorrect');
+  }
+  const feedback = document.createElement('strong');
+  feedback.className = correct ? 'ok' : 'error';
+  feedback.textContent = correct ? 'Верно!' : 'Неверно.';
+  $('quizFeedback').className = 'feedback';
+  $('quizFeedback').replaceChildren(feedback, ' ' + question.explanation);
+  $('quizNext').textContent = quizIndex + 1 === quizRound.length ? 'Показать результат' : 'Следующий вопрос';
+  $('quizNext').hidden = false;
+  $('quizNext').focus();
+}
+
+function startQuiz(focusQuestion = false) {
+  quizRound = quizShuffle(quizQuestionPools().flatMap(pool => quizShuffle(pool).slice(0, quizQuestionsPerType)));
+  quizIndex = 0;
+  quizScore = 0;
+  renderQuizQuestion(focusQuestion);
+}
+
+$('quizNext').addEventListener('click', () => {
+  if (quizIndex === quizRound.length) {
+    startQuiz(true);
+    return;
+  }
+  quizIndex++;
+  if (quizIndex < quizRound.length) {
+    renderQuizQuestion(true);
+    return;
+  }
+  $('quizProgress').textContent = 'Раунд завершён';
+  $('quizQuestion').textContent = 'Правильных ответов: ' + quizScore + ' из ' + quizRound.length;
+  $('quizOptions').hidden = true;
+  $('quizFeedback').replaceChildren();
+  $('quizFeedback').className = '';
+  $('quizNext').textContent = 'Новый раунд';
+  $('quizQuestion').focus();
 });
-$('explorerFirst').addEventListener('change',explorerRefresh);
-$('explorerSecond').addEventListener('change',explorerRefresh);
-$('explorerReset').onclick=()=>{explorerSelected.length=0;explorerRefresh()};
-$('explorerZoomOut').onclick=()=>{explorerWidth=Math.max(minKeyWidth,explorerWidth-keyStep);explorerDraw()};
-$('explorerZoomIn').onclick=()=>{explorerWidth=Math.min(maxKeyWidth,explorerWidth+keyStep);explorerDraw()};
 function syncSettings(){const ids=['trainingMode','difficulty'];for(const id of ids){const el=$(id);document.querySelectorAll('[data-setting="'+id+'"] button').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.value===el.value)));} $('settingsSummary').textContent=ids.map(id=>$(id).selectedOptions[0].textContent).join(' · ');}
 for(const id of ['trainingMode','difficulty']){try{const saved=localStorage.getItem('interval-setting-'+id);if(Array.from($(id).options).some(o=>o.value===saved))$(id).value=saved;}catch(e){}}
 document.querySelectorAll('.settings-options button').forEach(btn=>btn.addEventListener('click',()=>{const id=btn.parentElement.dataset.setting;if($(id).value===btn.dataset.value)return;$(id).value=btn.dataset.value;try{localStorage.setItem('interval-setting-'+id,btn.dataset.value)}catch(e){}syncSettings();changeMode();}));$('closeSettings').onclick=()=>{$('settings').open=false};syncSettings();
-setKeyWidth(keyWidth);changeMode();explorerRefresh();</script></body></html>
+setKeyWidth(keyWidth);changeMode();startQuiz();</script></body></html>
