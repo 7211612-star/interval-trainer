@@ -12,6 +12,27 @@
 #quizNext{margin-top:12px}
 #quizNext[hidden],.quiz-options[hidden]{display:none}
 @media(max-width:360px){.choices.quiz-options{grid-template-columns:1fr}}
+
+/* Desktop layout; mobile layout remains unchanged. */
+@media(min-width:1000px){
+ .wrap{max-width:none;padding:18px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+ .app-header,.task-card,footer{grid-column:1/-1}
+ .card{margin-top:0;min-width:0}
+ .task-card{padding:16px}
+ .task-card .piano{height:clamp(145px,19vh,220px)}
+ .task-card .black{height:62%}
+ .task-toolbar .notes{font-size:28px}
+ .task-toolbar .play-circle{width:40px;height:40px;flex-basis:40px}
+ .task-toolbar .zoom-controls button{width:34px;height:36px}
+ .answer-card{padding:18px!important}
+ .answer-card label{font-size:16px;margin-bottom:6px}
+ .answer-card .choice-block{margin-bottom:12px}
+ .answer-card .choice-row button,.answer-card .quality-choices .choice-row button{font-size:14px;min-height:40px}
+ .answer-card .actions button{font-size:16px;padding:12px}
+ #intervalQuiz{padding:18px}
+ .quiz-options button{min-height:52px;font-size:16px}
+ footer{margin:0}
+}
 </style></head><body><main class="wrap"><header class="app-header"><h1>🎹 Интервалы</h1><details class="compact-settings" id="settings"><summary><span aria-hidden="true">⚙</span><span id="settingsSummary">Простые · Базовая</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-body"><label>Режим тренировки</label><div class="settings-options" data-setting="trainingMode"><button type="button" data-value="simple">Простые</button><button type="button" data-value="compound">Составные</button><button type="button" data-value="all">Все</button></div><label>Сложность</label><div class="settings-options" data-setting="difficulty"><button type="button" data-value="basic">Базовая</button><button type="button" data-value="expanded">Расширенная</button><button type="button" data-value="full">Полная</button></div><select hidden id="trainingMode" aria-label="Режим"><option value="simple">Простые</option><option value="compound">Составные</option><option value="all">Все</option></select><select hidden id="difficulty" aria-label="Сложность"><option value="basic">Базовая</option><option value="expanded">Расширенная</option><option value="full">Полная</option></select><button type="button" id="closeSettings">Свернуть настройки</button></div></details></header><section class="card task-card"><div class="task-toolbar"><div class="play-controls"><button type="button" class="play-circle" id="playSequential" aria-label="По очереди" title="По очереди">♪→♪</button><button type="button" class="secondary play-circle" id="playTogether" aria-label="Вместе" title="Вместе">♫</button></div><div class="notes" id="question">…</div><div class="zoom-controls" aria-label="Масштаб клавиатуры"><button type="button" class="secondary" id="zoomOut" aria-label="Уменьшить клавиши">−</button><output id="zoomValue">32</output><button type="button" class="secondary" id="zoomIn" aria-label="Увеличить клавиши">+</button></div></div><div class="piano-scroll" id="pianoScroll" aria-label="Прокручиваемая клавиатура"><div class="piano" id="piano"><div class="white" data-note="0">До</div><div class="white" data-note="2">Ре</div><div class="white" data-note="4">Ми</div><div class="white" data-note="5">Фа</div><div class="white" data-note="7">Соль</div><div class="white" data-note="9">Ля</div><div class="white" data-note="11">Си</div><div class="white" data-note="12">До</div><div class="white hit" data-note="14">Ре</div><div class="white" data-note="16">Ми</div><div class="white" data-note="17">Фа</div><div class="white" data-note="19">Соль</div><div class="white" data-note="21">Ля</div><div class="white" data-note="23">Си</div><div class="white" data-note="24">До</div><div class="black" data-note="1" style="left:6.666666666666667%"></div><div class="black" data-note="3" style="left:13.333333333333334%"></div><div class="black" data-note="6" style="left:26.666666666666668%"></div><div class="black hit" data-note="8" style="left:33.33333333333333%"></div><div class="black" data-note="10" style="left:40.0%"></div><div class="black" data-note="13" style="left:53.333333333333336%"></div><div class="black" data-note="15" style="left:60.0%"></div><div class="black" data-note="18" style="left:73.33333333333333%"></div><div class="black" data-note="20" style="left:80.0%"></div><div class="black" data-note="22" style="left:86.66666666666667%"></div></div></div></section><section class="card answer-card"><div class="choice-block"><label>1. Количество ступеней</label><div id="stepsChoices" class="choices"></div></div><div class="choice-block"><label>2. Название интервала</label><div id="nameChoices" class="choices"></div></div><div class="choice-block"><label>3. Количество тонов</label><div id="tonesChoices" class="choices"></div></div><div class="choice-block"><label>4. Вид интервала</label><div id="qualityChoices" class="choices quality-choices"></div></div><div class="symbol-preview">Итоговое обозначение: <strong id="symbolPreview">——</strong></div><div class="actions"><button id="check">Проверить ответы</button><button class="secondary hidden" id="next">Следующее задание →</button></div><div class="feedback hidden" id="feedback"></div></section><section class="card" id="intervalQuiz" aria-labelledby="quizTitle">
   <div class="top quiz-heading"><h2 id="quizTitle">Викторина по интервалам</h2><span class="pill" id="quizScore"></span></div>
   <p class="muted small" id="quizProgress"></p>
@@ -19,7 +40,7 @@
   <div class="choices quiz-options" id="quizOptions" role="group" aria-labelledby="quizQuestion"></div>
   <div id="quizFeedback" role="status" aria-atomic="true"></div>
   <button type="button" id="quizNext" hidden>Следующий вопрос</button>
-</section><footer>Тренажёр по сольфеджио · v1.23</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
+</section><footer>Тренажёр по сольфеджио · v1.24</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
 // Составные интервалы: качества соответствуют простому интервалу через октаву.
 const compoundNames={9:'нона',10:'децима',11:'ундецима',12:'дуодецима',13:'терцдецима',14:'квартдецима',15:'квинтдецима'};
 for(let d=9;d<=15;d++){
@@ -74,25 +95,37 @@ function shuffleQuestions(previousFirst=-1){
 let order=shuffleQuestions(),idx=0,round=1;
 let shown=true,checked=false;const $=x=>document.getElementById(x);
 const minKeyWidth=22,maxKeyWidth=48,keyStep=2;
+const desktopLayout=window.matchMedia('(min-width:1000px)');
+let desktopZoom=1;
 let keyWidth=32;
+function effectiveKeyWidth(){return desktopLayout.matches?Math.max(1,$('pianoScroll').clientWidth/22*desktopZoom):keyWidth}
 try{const stored=Number(localStorage.getItem('intervalKeyWidth'));if(Number.isFinite(stored)&&stored>=minKeyWidth&&stored<=maxKeyWidth)keyWidth=stored}catch(e){}
 function setKeyWidth(width){
  keyWidth=Math.max(minKeyWidth,Math.min(maxKeyWidth,width));
- $('piano').style.setProperty('--white-width',keyWidth+'px');
- $('zoomValue').textContent=keyWidth;
- $('zoomOut').disabled=keyWidth<=minKeyWidth;
- $('zoomIn').disabled=keyWidth>=maxKeyWidth;
+ updateZoom();
  try{localStorage.setItem('intervalKeyWidth',String(keyWidth))}catch(e){}
  piano();
 }
-$('zoomOut').onclick=()=>setKeyWidth(keyWidth-keyStep);
-$('zoomIn').onclick=()=>setKeyWidth(keyWidth+keyStep);
+function updateZoom(){
+ const w=effectiveKeyWidth();
+ $('piano').style.setProperty('--white-width',w+'px');
+ $('zoomValue').textContent=desktopLayout.matches?Math.round(desktopZoom*100)+'%':keyWidth;
+ $('zoomOut').disabled=desktopLayout.matches?desktopZoom<=0.8:keyWidth<=minKeyWidth;
+ $('zoomIn').disabled=desktopLayout.matches?desktopZoom>=1.6:keyWidth>=maxKeyWidth;
+}
+function changeZoom(direction){
+ if(desktopLayout.matches){desktopZoom=Math.max(0.8,Math.min(1.6,Math.round((desktopZoom+direction*0.1)*10)/10));piano();}
+ else setKeyWidth(keyWidth+direction*keyStep);
+}
+$('zoomOut').onclick=()=>changeZoom(-1);
+$('zoomIn').onclick=()=>changeZoom(1);
+window.addEventListener('resize',()=>piano());
 
 function current(){return questions[order[idx]]}
 function piano(){
  const q=current(),keyCount=22;
  $('piano').style.setProperty('--key-count',keyCount);
- $('piano').style.setProperty('--white-width',keyWidth+'px');
+ updateZoom();
  $('piano').classList.toggle('extended', $('trainingMode').value!=='simple');
  let html='';
  for(let i=0;i<keyCount;i++){
@@ -109,7 +142,7 @@ function piano(){
  const scroller=$('pianoScroll');
  const mid=(q.start+q.end)/2;
  const centerWhite=Math.floor(mid/12)*7+offsets.findIndex((v,j)=>j===6||offsets[j+1]>mid%12);
- scroller.scrollLeft=Math.max(0,(centerWhite+.5)*keyWidth-scroller.clientWidth/2);
+ scroller.scrollLeft=Math.max(0,(centerWhite+.5)*effectiveKeyWidth()-scroller.clientWidth/2);
 }
 function render(){
  const q=current();shown=true;checked=false;
