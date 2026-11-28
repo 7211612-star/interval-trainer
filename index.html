@@ -40,7 +40,7 @@
   <div class="choices quiz-options" id="quizOptions" role="group" aria-labelledby="quizQuestion"></div>
   <div id="quizFeedback" role="status" aria-atomic="true"></div>
   <button type="button" id="quizNext" hidden>Следующий вопрос</button>
-</section><footer>Тренажёр по сольфеджио · v1.24</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
+</section><footer>Тренажёр по сольфеджио · v1.25</footer></main><script>const names=['До','До♯','Ре','Ре♯','Ми','Фа','Фа♯','Соль','Соль♯','Ля','Ля♯','Си'];const whiteNames=['До','Ре','Ми','Фа','Соль','Ля','Си'];const offsets=[0,2,4,5,7,9,11];const blackAfter=[0,1,3,4,5];const qualities={1:{0:['чистая прима','ч1'],'0.5':['увеличенная прима','ув1']},2:{0:['уменьшённая секунда','ум2'],'0.5':['малая секунда','м2'],1:['большая секунда','б2'],'1.5':['увеличенная секунда','ув2']},3:{1:['уменьшённая терция','ум3'],'1.5':['малая терция','м3'],2:['большая терция','б3'],'2.5':['увеличенная терция','ув3']},4:{2:['уменьшённая кварта','ум4'],'2.5':['чистая кварта','ч4'],3:['увеличенная кварта','ув4']},5:{3:['уменьшённая квинта','ум5'],'3.5':['чистая квинта','ч5'],4:['увеличенная квинта','ув5']},6:{'3.5':['уменьшённая секста','ум6'],4:['малая секста','м6'],'4.5':['большая секста','б6'],5:['увеличенная секста','ув6']},7:{'4.5':['уменьшённая септима','ум7'],5:['малая септима','м7'],'5.5':['большая септима','б7'],6:['увеличенная септима','ув7']},8:{'5.5':['уменьшённая октава','ум8'],6:['чистая октава','ч8'],'6.5':['увеличенная октава','ув8']}};
 // Составные интервалы: качества соответствуют простому интервалу через октаву.
 const compoundNames={9:'нона',10:'децима',11:'ундецима',12:'дуодецима',13:'терцдецима',14:'квартдецима',15:'квинтдецима'};
 for(let d=9;d<=15;d++){
@@ -61,6 +61,13 @@ for(let d=1;d<=15;d++){
  if(q==='ув')qualities[d][Number(t)+.5]=['дважды увеличенная '+e[0].split(' ').slice(1).join(' '),'дв.ув'+d];
  if(q==='ум'&&Number(t)>=.5)qualities[d][Number(t)-.5]=['дважды уменьшённая '+e[0].split(' ').slice(1).join(' '),'дв.ум'+d];}
 }
+// Teaching scope: temporarily exclude augmented primes and thirds (including double augmentation).
+// Restore by removing this filter; theoretical definitions above remain intact.
+for(const d of [1,3,10]){
+ for(const [tones,entry] of Object.entries(qualities[d])){
+  if(/^(?:дв\.)?ув\d+$/.test(entry[1]))delete qualities[d][tones];
+ }
+}
 const accidentals=[{shift:-2,mark:'𝄫'},{shift:-1,mark:'♭'},{shift:0,mark:''},{shift:1,mark:'♯'},{shift:2,mark:'𝄪'}];
 const simpleQuestions=[], extendedQuestions=[];
 for(let lower=0;lower<22;lower++)for(let degree=1;degree<=15;degree++){
@@ -72,7 +79,7 @@ for(let lower=0;lower<22;lower++)for(let degree=1;degree<=15;degree++){
  if(start<0||end>36||end<start||!entry)continue;
  const quality=entry[1].replace(/\d+$/,'');const simple=(degree-1)%7+1;
  const basic=['ч','м','б'].includes(quality)||(quality==='ув'&&simple===4)||(quality==='ум'&&simple===5);
- const expanded=basic||(quality==='ув'&&[1,2,5].includes(simple))||(quality==='ум'&&[4,7].includes(simple));
+ const expanded=basic||(quality==='ув'&&[2,5].includes(simple))||(quality==='ум'&&[4,7].includes(simple));
  const level=Math.abs(lo.shift)>1||Math.abs(hi.shift)>1?2:basic?0:expanded?1:2;
  (degree<=8?simpleQuestions:extendedQuestions).push({a:whiteNames[lower%7]+lo.mark,b:whiteNames[upper%7]+hi.mark,start,end,degree,level,lower,upper});
  }}
